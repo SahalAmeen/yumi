@@ -13,6 +13,9 @@ import Icons from './components/Icons';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+// import gif from './assets/sneakpeak.gif';
+import { GifPlayer } from 'react-gif-player';
+
 
 const truncate = (input, len) =>
   input.length > len ? `${input.substring(0, len)}...` : input;
@@ -247,7 +250,14 @@ function App() {
 
     <div className='inner'>
             {/* <Slider {...settings}> */}
-                <div className="slideImage"><img src="https://picsum.photos/400/500?random=1"/></div>
+            <div className="slideImage">
+            {/* <GifPlayer
+        gif={"./sneakpeak.gif"}
+        // still={still}
+        // pauseRef={pause => this.pauseGif = pause}
+      /> */}
+      </div>
+                <div className="slideImage"><img src={`https://cdn.discordapp.com/attachments/960782078406955058/960891279795945512/ezgif.com-gif-maker.gif`}/></div>
                 {/* <div className="slideImage"><img src="https://picsum.photos/400/400?random=2"/></div>
                 <div className="slideImage"><img src="https://picsum.photos/400/400?random=3"/></div>
                 <div className="slideImage"><img src="https://picsum.photos/400/400?random=4"/></div>
