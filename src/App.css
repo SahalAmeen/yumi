@@ -298,7 +298,7 @@ body{
         justify-content: space-around;
         /* flex-direction: row-reverse; */
         -webkit-box-align: center;
-        padding-top: 100px;
+        padding-top: 150px;
     }
 
     .main .inner {
