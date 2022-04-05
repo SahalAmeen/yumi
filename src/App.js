@@ -4,17 +4,17 @@ import { connect } from "./redux/blockchain/blockchainActions";
 import { fetchData } from "./redux/data/dataActions";
 import * as s from "./styles/globalStyles";
 import styled from "styled-components";
-import Header from "./components/Header";
-import Slideshow from "./components/Slideshow";
-import Connect from "./components/Connect";
+// import Header from "./components/Header";
+// import Slideshow from "./components/Slideshow";
+// import Connect from "./components/Connect";
 import './App.css';
-import MainSection from "./components/MainSection";
+// import MainSection from "./components/MainSection";
 import Icons from './components/Icons';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
+// import Slider from "react-slick";
 // import gif from './assets/sneakpeak.gif';
-import { GifPlayer } from 'react-gif-player';
+// import { GifPlayer } from 'react-gif-player';
 
 
 const truncate = (input, len) =>
