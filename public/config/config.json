@@ -1,18 +1,18 @@
 {
-  "CONTRACT_ADDRESS": "0x2fBC423d8f7e6fbAC9E7f17FaC60E9eA3749E64a",
-  "SCAN_LINK": "https://rinkeby.etherscan.io/token/0x2fbc423d8f7e6fbac9e7f17fac60e9ea3749e64a",
+  "CONTRACT_ADDRESS": "0x83cdA7e8C83F97F81023A677188a12C11E3536fc",
+  "SCAN_LINK": "https://etherscan.io/token/0x83cda7e8c83f97f81023a677188a12c11e3536fc",
   "NETWORK": {
-    "NAME": "Rinkeby Etherium",
+    "NAME": "Ethereum",
     "SYMBOL": "ETH",
-    "ID": 4
+    "ID": 1
   },
   "NFT_NAME": "Yumi",
   "SYMBOL": "Yumi",
   "MAX_SUPPLY": 5000,
-  "WEI_COST": 25000000000000000,
+  "WEI_COST": 27000000000000000,
   "DISPLAY_COST": 0.027,
-  "GAS_LIMIT": 285000,
-  "MARKETPLACE": "Opeansea",
+  "GAS_LIMIT": 90000,
+  "MARKETPLACE": "Opensea",
   "MARKETPLACE_LINK": "https://testnets.opensea.io/collection/",
   "SHOW_BACKGROUND": true
 }

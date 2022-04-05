@@ -281,12 +281,12 @@ function App() {
             jc={"center"}
             ai={"center"}
             style={{
-              backgroundColor: "var(--accent-text)",
+              backgroundColor: "rgb(255 212 212)",
               padding: '48px 24px',
               borderRadius: 24,
               width: '75%',
               margin: '30px auto',
-              // border: "4px dashed var(--secondary)",
+              border: "4px dashed black",
               boxShadow: "0px 5px 11px 2px rgba(0,0,0,0.7)",
             }}
           >
