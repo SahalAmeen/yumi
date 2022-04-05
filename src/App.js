@@ -236,7 +236,7 @@ function App() {
     <>
   
       <div className='header'>
-        <div className='logo' style={{marginLeft:'20px',color: 'white'}}><p>YUMI</p></div>
+        <div className='logo' ><img src="./logo.png"/></div>
         <div className='icons'>
             <Icons type="twitter" link="https://twitter.com/"/> 
             <Icons type="discord" link="https://discord.com/"/> 
