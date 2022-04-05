@@ -462,8 +462,6 @@ function App() {
             <div className="info">
             <p className="text-white text-center text-lg">Yumi is a collection of 5000 YUMI's babes reincarnated deep down from the Animeverse, ready to fascinate with their appearance.</p>
             <br/>
-            {/* <p className="text-white text-center text-lg">You can mint upto 10 Furukami Flower NFT per transaction, max upto 20 per wallet.</p> */}
-            {/* <br/> */}
             <p className="text-center text-white visible ">© 2022 YUMI</p>
             </div>
             </div>
