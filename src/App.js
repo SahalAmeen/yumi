@@ -276,8 +276,8 @@ function App() {
       /> */}
           </div>
           <div className="slideImage">
-            <img
-              src={`https://cdn.discordapp.com/attachments/960782078406955058/960891279795945512/ezgif.com-gif-maker.gif`}
+            <img style={{maxHeight: '516px'}}
+              src={`https://cdn.discordapp.com/attachments/960782078406955058/961288159277244467/ezgif.com-gif-maker_7.gif`}
             />
           </div>
           {/* <div className="slideImage"><img src="https://picsum.photos/400/400?random=2"/></div>
