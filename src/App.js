@@ -337,7 +337,7 @@ function App() {
                   color: "var(--accent)",
                 }}
               >
-                {totalSupply} / {CONFIG.MAX_SUPPLY}
+              SOLD OUT
               </s.TextTitle>
               <s.TextDescription
                 style={{
