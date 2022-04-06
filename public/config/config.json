@@ -8,7 +8,7 @@
   },
   "NFT_NAME": "Yumi",
   "SYMBOL": "Yumi",
-  "MAX_SUPPLY": 5000,
+  "MAX_SUPPLY": 2000,
   "WEI_COST": 27000000000000000,
   "DISPLAY_COST": 0.027,
   "GAS_LIMIT": 110000,

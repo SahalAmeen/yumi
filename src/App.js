@@ -134,7 +134,8 @@ function App() {
     let cost = CONFIG.WEI_COST;
     let gasLimit = CONFIG.GAS_LIMIT;
     let totalCostWei = String(cost * mintAmount);
-    let totalGasLimit = String(gasLimit *mintAmount);
+    let totalGasLimit = String(gasLimit * mintAmount);
+    estimateGas();
 
     console.log("Cost: ", totalCostWei);
     console.log("Gas limit: ", totalGasLimit);
@@ -212,6 +213,21 @@ function App() {
     SET_CONFIG(config);
   };
 
+  const estimateGas = async () =>{
+    const address = CONFIG.CONTRACT_ADDRESS;
+    const provider = ethers.getDefaultProvider();
+    const erc721a = new ethers.Contract(address, abi, provider);
+    // console.log(erc721a);
+    const recipient = blockchain.account;
+    let gasPrice = await provider.getGasPrice();
+    // console.log(gasPrice.toNumber())
+    let  gasLimit = await erc721a.estimateGas.transfer(recipient, 10);
+
+    let transactionFee = gasPrice * gasLimit;
+    console.log(transactionFee )
+
+// console.log({estimation})
+  }
   useEffect(() => {
     getConfig();
     getRemaining();
@@ -485,7 +501,7 @@ function App() {
             </div> */}
           <div className="info">
             <p className="text-white text-center text-lg">
-              Yumi is a collection of 5000 YUMI's babes reincarnated deep down
+              Yumi is a collection of 2000 YUMI's babes reincarnated deep down
               from the Animeverse, ready to fascinate with their appearance.
             </p>
             <br />

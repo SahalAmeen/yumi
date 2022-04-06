@@ -462,7 +462,7 @@ console.log(blockchain);
                 </button>
             </div> */}
             <div className="info">
-            <p className="text-white text-center text-lg">Yumi is a collection of 5000 YUMI's babes reincarnated deep down from the Animeverse, ready to fascinate with their appearance.</p>
+            <p className="text-white text-center text-lg">Yumi is a collection of 2000 YUMI's babes reincarnated deep down from the Animeverse, ready to fascinate with their appearance.</p>
             <br/>
             <p className="text-center text-white visible ">© 2022 YUMI</p>
             </div>
