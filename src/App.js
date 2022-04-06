@@ -186,6 +186,7 @@ function App() {
     }
   };
 
+
   const getConfig = async () => {
     const configResponse = await fetch("/config/config.json", {
       headers: {
@@ -234,7 +235,8 @@ function App() {
       }
     ]
   };
-
+console.log(data);
+console.log(blockchain);
   return (    
     <>
   
@@ -298,7 +300,7 @@ function App() {
                 color: "var(--accent)",
               }}
             >
-              {data.totalSupply} / {CONFIG.MAX_SUPPLY}
+              {data.totalSupply>0?(`${data.totalSupply} / ${CONFIG.MAX_SUPPLY}`):null}
             </s.TextTitle>
             <s.TextDescription
               style={{
