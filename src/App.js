@@ -135,7 +135,6 @@ function App() {
     let gasLimit = CONFIG.GAS_LIMIT;
     let totalCostWei = String(cost * mintAmount);
     let totalGasLimit = String(gasLimit * mintAmount);
-    estimateGas();
 
     console.log("Cost: ", totalCostWei);
     console.log("Gas limit: ", totalGasLimit);
