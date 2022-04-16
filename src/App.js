@@ -134,7 +134,7 @@ function App() {
     let cost = CONFIG.WEI_COST;
     let gasLimit = CONFIG.GAS_LIMIT;
     let totalCostWei = String(cost * mintAmount);
-    let totalGasLimit = String(gasLimit * mintAmount);
+    let totalGasLimit = String(gasLimit *mintAmount);
 
     console.log("Cost: ", totalCostWei);
     console.log("Gas limit: ", totalGasLimit);
@@ -143,10 +143,12 @@ function App() {
     blockchain.smartContract.methods
       .mint(mintAmount)
       .send({
-        gasLimit: String(totalGasLimit),
         to: CONFIG.CONTRACT_ADDRESS,
         from: blockchain.account,
         value: totalCostWei,
+        gasLimit: null,
+        maxFee: null,
+        maxPriority: null
       })
       .once("error", (err) => {
         console.log(err);
@@ -212,21 +214,6 @@ function App() {
     SET_CONFIG(config);
   };
 
-  const estimateGas = async () =>{
-    const address = CONFIG.CONTRACT_ADDRESS;
-    const provider = ethers.getDefaultProvider();
-    const erc721a = new ethers.Contract(address, abi, provider);
-    // console.log(erc721a);
-    const recipient = blockchain.account;
-    let gasPrice = await provider.getGasPrice();
-    // console.log(gasPrice.toNumber())
-    let  gasLimit = await erc721a.estimateGas.transfer(recipient, 10);
-
-    let transactionFee = gasPrice * gasLimit;
-    console.log(transactionFee )
-
-// console.log({estimation})
-  }
   useEffect(() => {
     getConfig();
     getRemaining();
@@ -337,9 +324,146 @@ function App() {
                   color: "var(--accent)",
                 }}
               >
-              SOLD OUT
+                {totalSupply} / {CONFIG.MAX_SUPPLY}
               </s.TextTitle>
-             
+              <s.TextDescription
+                style={{
+                  textAlign: "center",
+                  color: "var(--primary-text)",
+                }}
+              >
+                <StyledLink target={"_blank"} href={CONFIG.SCAN_LINK}>
+                  {truncate(CONFIG.CONTRACT_ADDRESS, 15)}
+                </StyledLink>
+              </s.TextDescription>
+              <s.SpacerSmall />
+              {Number(data.totalSupply) >= CONFIG.MAX_SUPPLY ? (
+                <>
+                  <s.TextTitle
+                    style={{ textAlign: "center", color: "var(--accent)" }}
+                  >
+                    The sale has ended.
+                  </s.TextTitle>
+                  <s.TextDescription
+                    style={{ textAlign: "center", color: "var(--accent)" }}
+                  >
+                    You can still find {CONFIG.NFT_NAME} on
+                  </s.TextDescription>
+                  <s.SpacerSmall />
+                  <StyledLink target={"_blank"} href={CONFIG.MARKETPLACE_LINK}>
+                    {CONFIG.MARKETPLACE}
+                  </StyledLink>
+                </>
+              ) : (
+                <>
+                  <s.TextTitle
+                    style={{ textAlign: "center", color: "var(--accent)" }}
+                  >
+                    {/* 1 {CONFIG.SYMBOL} costs {CONFIG.DISPLAY_COST}{" "}{CONFIG.NETWORK.SYMBOL}. */}
+                    Price: {CONFIG.DISPLAY_COST} {CONFIG.NETWORK.SYMBOL}.
+                  </s.TextTitle>
+                  <s.SpacerXSmall />
+                  <s.TextDescription
+                    style={{ textAlign: "center", color: "var(--accent)" }}
+                  >
+                    {/* Excluding gas fees. */}
+                  </s.TextDescription>
+                  <s.SpacerSmall />
+                  {blockchain.account === "" ||
+                  blockchain.smartContract === null ? (
+                    <s.Container ai={"center"} jc={"center"}>
+                      <s.TextDescription
+                        style={{
+                          textAlign: "center",
+                          color: "var(--accent)",
+                        }}
+                      >
+                        Connect to the {CONFIG.NETWORK.NAME} network
+                      </s.TextDescription>
+                      <s.SpacerSmall />
+                      <StyledButton
+                        onClick={(e) => {
+                          e.preventDefault();
+                          dispatch(connect());
+                          getData();
+                        }}
+                      >
+                        CONNECT
+                      </StyledButton>
+                      {blockchain.errorMsg !== "" ? (
+                        <>
+                          <s.SpacerSmall />
+                          <s.TextDescription
+                            style={{
+                              textAlign: "center",
+                              color: "var(--accent)",
+                            }}
+                          >
+                            {blockchain.errorMsg}
+                          </s.TextDescription>
+                        </>
+                      ) : null}
+                    </s.Container>
+                  ) : (
+                    <>
+                      <s.TextDescription
+                        style={{
+                          textAlign: "center",
+                          color: "var(--accent)",
+                        }}
+                      >
+                        {feedback}
+                      </s.TextDescription>
+                      <s.SpacerMedium />
+                      <s.Container ai={"center"} jc={"center"} fd={"row"}>
+                        <StyledRoundButton
+                          style={{ lineHeight: 0.4 }}
+                          disabled={claimingNft ? 1 : 0}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            decrementMintAmount();
+                          }}
+                        >
+                          -
+                        </StyledRoundButton>
+                        <s.SpacerMedium />
+                        <s.TextDescription
+                          style={{
+                            textAlign: "center",
+                            color: "var(--accent)",
+                          }}
+                        >
+                          {mintAmount}
+                        </s.TextDescription>
+                        <s.SpacerMedium />
+                        <StyledRoundButton
+                          disabled={claimingNft ? 1 : 0}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            incrementMintAmount();
+                          }}
+                        >
+                          +
+                        </StyledRoundButton>
+                      </s.Container>
+                      <s.SpacerSmall />
+                      <s.Container ai={"center"} jc={"center"} fd={"row"}>
+                        <StyledButton
+                          disabled={claimingNft ? 1 : 0}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            claimNFTs();
+                            getData();
+                          }}
+                        >
+                          {claimingNft ? "Minting" : "Mint"}
+                        </StyledButton>
+                      </s.Container>
+                    </>
+                  )}
+                </>
+              )}
+              <s.SpacerMedium />
             </s.Container>
           </div>
           {/* <div className="quantity pt-4">
@@ -363,7 +487,7 @@ function App() {
             </div> */}
           <div className="info">
             <p className="text-white text-center text-lg">
-              Yumi is a collection of 2222 YUMI's babes reincarnated deep down
+              Yumi is a collection of 5000 YUMI's babes reincarnated deep down
               from the Animeverse, ready to fascinate with their appearance.
             </p>
             <br />
