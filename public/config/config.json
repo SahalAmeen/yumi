@@ -1,16 +1,16 @@
 {
-  "CONTRACT_ADDRESS": "0xFF2790802F3ca1777c632892394f8AfaCa92Bd9C",
+  "CONTRACT_ADDRESS": "0xdff9b46e5ee8ecf824363c1ce67a48525a87014e",
   "SCAN_LINK": "https://etherscan.io/address/0xff2790802f3ca1777c632892394f8afaca92bd9c#code",
   "NETWORK": {
     "NAME": "Ethereum",
     "SYMBOL": "ETH",
-    "ID": 1
+    "ID": 4
   },
   "NFT_NAME": "Yumi",
   "SYMBOL": "Yumi",
   "MAX_SUPPLY": 5000,
   "WEI_COST": 27000000000000000,
-  "DISPLAY_COST": 0.027,
+  "DISPLAY_COST": 0.001,
   "GAS_LIMIT": 110000,
   "MARKETPLACE": "Opensea",
   "MARKETPLACE_LINK": "https://testnets.opensea.io/collection/",
